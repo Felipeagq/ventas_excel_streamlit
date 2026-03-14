@@ -3,7 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 
-st.title("Análisis de Ventas desde Excel v4")
+col_titulo, col_logo = st.columns([4, 1])
+col_titulo.title("Análisis de Ventas desde Excel v4")
+col_logo.image("python-logo.png", use_container_width=True)
 
 # ── Sidebar ─────────────────────────────────────────────────
 with st.sidebar:
