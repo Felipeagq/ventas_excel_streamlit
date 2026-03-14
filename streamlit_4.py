@@ -6,13 +6,14 @@ import io
 st.title("Análisis de Ventas desde Excel v3")
 
 # ── Cargar Excel ────────────────────────────────────────────
-archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx", "xls"])
+archivos = st.file_uploader("Sube uno o varios archivos Excel", type=["xlsx", "xls"], accept_multiple_files=True)
 
-if archivo is None:
-    st.info("Sube un archivo Excel para comenzar el análisis.")
+if not archivos:
+    st.info("Sube al menos un archivo Excel para comenzar el análisis.")
     st.stop()
 
-df = pd.read_excel(archivo)
+df = pd.concat([pd.read_excel(f) for f in archivos], ignore_index=True)
+st.caption(f"{len(archivos)} archivo(s) cargado(s) — {len(df):,} filas en total")
 st.dataframe(df)
 
 # ── Filtros ────────────────────────────────────────────────
