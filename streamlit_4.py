@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 
-st.title("Análisis de Ventas desde Excel v2")
+st.title("Análisis de Ventas desde Excel v3")
 
 # ── Cargar Excel ────────────────────────────────────────────
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx", "xls"])
