@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Análisis de Ventas desde Excel")
+st.title("Análisis de Ventas desde Excel v2")
 
 # ── Cargar Excel ────────────────────────────────────────────
 archivo = st.file_uploader("Sube tu archivo Excel", type=["xlsx", "xls"])
