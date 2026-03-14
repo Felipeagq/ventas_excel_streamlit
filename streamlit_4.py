@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 
-st.title("Análisis de Ventas desde Excel v3")
+st.title("Análisis de Ventas desde Excel v4")
 
 # ── Cargar Excel ────────────────────────────────────────────
 archivos = st.file_uploader("Sube uno o varios archivos Excel", type=["xlsx", "xls"], accept_multiple_files=True)
@@ -15,6 +15,10 @@ if not archivos:
 df = pd.concat([pd.read_excel(f) for f in archivos], ignore_index=True)
 st.caption(f"{len(archivos)} archivo(s) cargado(s) — {len(df):,} filas en total")
 st.dataframe(df)
+
+buf = io.BytesIO()
+df.to_excel(buf, index=False)
+st.download_button("Descargar Excel", buf.getvalue(), "datos_combinados.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
 # ── Filtros ────────────────────────────────────────────────
 st.subheader("Filtros")
